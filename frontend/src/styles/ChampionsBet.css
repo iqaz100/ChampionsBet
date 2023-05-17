@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.container {
+  width: 80%;
+  height: 80vh;
+  border-radius: 22px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftSide {
+  height: 80vh;
+  width: 32%;
+  background-color: rgb(255, 255, 255);
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
+}
+
+.rightSide {
+  height: 80vh;
+  width: 68%;
+  background-color: rgb(236, 234, 234);
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.champions {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  color: rgb(27, 27, 141);
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 62px;
+}
+
+.bet {
+  font-family: 'Bangers', cursive;
+  font-size: 32px;
+  color: #ffa500;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
