@@ -11,7 +11,8 @@ class MatchSerializer(serializers.ModelSerializer):
             'game_room',
             'home_team',
             'away_team',
-            'result',
+            'home_team_score',
+            'away_team_score'
         )
 
 

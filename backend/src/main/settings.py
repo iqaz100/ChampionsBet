@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-($^k9lr25nqpravc3les+&uz%tcn69qyf@24f(gcqcl)%m!u4c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'match',
     'team',
     'drf_yasg',
+    'main'
 ]
 
 MIDDLEWARE = [
@@ -85,8 +86,8 @@ DATABASES = {
         'NAME': 'championsbet',
         'USER': 'chbet',
         'PASSWORD': 'chbet123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
