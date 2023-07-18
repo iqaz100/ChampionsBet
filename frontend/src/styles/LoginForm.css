@@ -1,0 +1,12 @@
+.formPasswordField {
+  font-weight: bold;
+  color: blue;
+}
+
+.formLoginField {
+  font-weight: bold;
+}
+
+.submitBtn {
+  margin-left: 5px;
+}
