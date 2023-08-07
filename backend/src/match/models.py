@@ -16,7 +16,9 @@ class Match(models.Model):
 
     away_team = models.ForeignKey(Team, null=False, on_delete=models.CASCADE, related_name='away_team')
 
-    result = models.CharField(max_length=10, null=True)
+    home_team_score = models.IntegerField(null=False)
+
+    away_team_score = models.IntegerField(null=False)
 
 
 class PredictedResult(models.Model):
