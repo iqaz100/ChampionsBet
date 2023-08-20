@@ -34,4 +34,6 @@ class PredictedResult(models.Model):
 
     away_team_score = models.IntegerField(null=False)
 
+    bet_score = models.IntegerField(null=True)
+
 

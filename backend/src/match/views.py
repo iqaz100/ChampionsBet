@@ -27,8 +27,10 @@ class MatchView(viewsets.ModelViewSet):
         if request.data.get('home_team_score', None) or request.data.get('away_team_score', None):
             match = Match.objects.get(id=instance.id)
             if match.home_team_score and match.away_team_score:
-                # for result in instance.results:
-                calculate_points()
+                for result in instance.results:
+                    result.bet_score = calculate_points(match.home_team_score, match.away_team_score,
+                                     result.home_team_score, result.away_team_score)
+                    result.save()
 
         return Response(serializer.data)
 
