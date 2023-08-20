@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.response import Response
 
 from match.models import Match, PredictedResult
 from match.serializers import MatchSerializer, PredictedResultSerializer
@@ -18,14 +19,16 @@ class MatchView(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
 
-        if request.data.get('home_team_score') or request.data.get('away_team_score'):
-            for result in instance.results:
-                calculate_points()
-
         if getattr(instance, '_prefetched_objects_cache', None):
             # If 'prefetch_related' has been applied to a queryset, we need to
             # forcibly invalidate the prefetch cache on the instance.
             instance._prefetched_objects_cache = {}
+
+        if request.data.get('home_team_score', None) or request.data.get('away_team_score', None):
+            match = Match.objects.get(id=instance.id)
+            if match.home_team_score and match.away_team_score:
+                # for result in instance.results:
+                calculate_points()
 
         return Response(serializer.data)
 

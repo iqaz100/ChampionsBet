@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from game_room.models import GameRoom, GameRoomUser
+from game_room.models import GameRoom, GameRoomUser, Invitation
 
 
 class GameRoomSerializer(serializers.ModelSerializer):
@@ -20,4 +20,15 @@ class GameRoomUserSerializer(serializers.ModelSerializer):
             'user',
             'game_room',
             'total_points'
+        )
+
+
+class InvitationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Invitation
+        fields = (
+            'id',
+            'user',
+            'game_room',
+            'status'
         )
