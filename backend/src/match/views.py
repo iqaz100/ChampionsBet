@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from match.models import Match, PredictedResult
 from match.serializers import MatchSerializer, PredictedResultSerializer
 
+from backend.src.match.helpers import calculate_points
+
 
 class MatchView(viewsets.ModelViewSet):
     queryset = Match.objects.all()
@@ -25,8 +27,10 @@ class MatchView(viewsets.ModelViewSet):
         if request.data.get('home_team_score', None) or request.data.get('away_team_score', None):
             match = Match.objects.get(id=instance.id)
             if match.home_team_score and match.away_team_score:
-                pass
-                #TODO: Tutaj metoda liczaca punkty - wziac ją z laptopa
+                for result in instance.results:
+                    result.bet_score = calculate_points(match.home_team_score, match.away_team_score,
+                                     result.home_team_score, result.away_team_score)
+                    result.save()
 
         return Response(serializer.data)
 

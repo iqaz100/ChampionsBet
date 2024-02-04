@@ -12,6 +12,8 @@ class Match(models.Model):
 
     game_room = models.ForeignKey(GameRoom, null=False, on_delete=models.CASCADE)
 
+    start_date = models.DateTimeField(null=False)
+
     home_team = models.ForeignKey(Team, null=False, on_delete=models.CASCADE, related_name='home_team')
 
     away_team = models.ForeignKey(Team, null=False, on_delete=models.CASCADE, related_name='away_team')
@@ -24,12 +26,14 @@ class Match(models.Model):
 class PredictedResult(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
-    match = models.ForeignKey(Match, null=False, on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, null=False, on_delete=models.CASCADE, related_name="results")
 
     user = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
 
     home_team_score = models.IntegerField(null=False)
 
     away_team_score = models.IntegerField(null=False)
+
+    bet_score = models.IntegerField(null=True)
 
 
